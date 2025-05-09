@@ -1,8 +1,9 @@
 import MovieCard from "../components/MovieCard.jsx";
 import {useState} from "react";
+import "../css/Home.css"
 
 function Home(){
-    const [searchQuery, SetSearchQuery] = useState('');
+    const [searchQuery, SetSearchQuery] = useState("");
 
     const movies = [
         {id: 1, tittle: "Akira", release_date:"1988"},
@@ -10,10 +11,10 @@ function Home(){
         {id: 3, tittle: "Soul Eater", release_date:"1488"},
     ]
 
-    const handleSearch = () => {
+    const handleSearch = (e) => {
         e.preventDefault()
-        alert(searchQuery)
-        setSearchQuery("--------")
+        alert(searchQuery);
+        SetSearchQuery("");
     };
 
     return (
@@ -29,7 +30,9 @@ function Home(){
                 <button type={"submit"} className={"search-button"}>Search</button>
             </form>
             <div className={"movies-grid"}>
-                {movies.map(movie => <MovieCard movie={movie} key={movie.id}/>)}
+                {movies.map(movie => (
+                    (<MovieCard movie={movie} key={movie.id}/>)
+                ))}
             </div>
         </div>
     );
